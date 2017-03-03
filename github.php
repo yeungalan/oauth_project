@@ -1,0 +1,137 @@
+<html>
+  <head>
+
+	<link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
+	<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<?php
+	session_start();
+	if(isset($_GET["redirect"])!==False){
+		if (isset($_GET["url"])){
+    $_SESSION["url"]=$_GET["url"];
+    }
+		header("Refresh: 0; url=https://github.com/login/oauth/authorize?response_type=code&client_id=0982c21b9c3db83c40b9&redirect_uri=https://oauth.alanyeung.co/github.php&scope=user:email");
+	die();
+	}
+		?>
+		
+		        <script>
+				var userid= "";
+         var authentication=function(){
+           
+		$.get("authentication.php",
+    {
+        userid: userid,
+		authentication: "github"
+    },
+    function(data, status){
+        console.log(status);
+    });
+            
+        }
+        </script>
+	
+<?php
+$client_id = "0982c21b9c3db83c40b9";
+$url = "https://oauth.alanyeung.co/github.php";
+$client_secret = "e618aee8256aa36feba9aa02e71777f25ebb3eb9";
+
+
+$json = file_get_contents('https://github.com/login/oauth/access_token/?client_id='.$client_id.'&client_secret='.$client_secret.'&code='.$_GET["code"].'&redirect_uri='.$url.'&format=json');
+
+$obj = json_decode($json);
+
+echo '<script>';
+
+
+if (strpos($json, 'error') !== false) {
+    echo 'console.error("Error : '.$obj->{'error'}.'");';
+	echo 'console.error("Description : '.$obj->{'error_description'}.'");';
+	echo 'console.error("Support URi : '.$obj->{'error_uri'}.'");';
+	echo 'console.error("Github Login Detected Error");';
+	header("Refresh: 0; url=github.php?redirect=1");
+}else{
+	echo 'console.log("Access Token : '.$obj->{'access_token'}.'");';
+	echo 'console.log("Token Type : '.$obj->{'token_type'}.'");';
+	echo 'console.log("Scope : '.$obj->{'scope'}.'");';
+	echo 'userid = "'.$obj->{'access_token'}.'";';
+	echo 'authentication();';
+}
+
+echo '</script>';
+
+
+
+$file = "https://api.github.com/user?access_token=".$obj->{'access_token'};
+$user = download($file);
+
+function download($url) {
+    set_time_limit(0);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+	curl_setopt($ch, CURLOPT_USERAGENT, "Awesome-Octocat-App");
+    $r = curl_exec($ch);
+    curl_close($ch);
+    header('Expires: 0'); // no cache
+    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+    header('Last-Modified: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
+    header('Cache-Control: private', false);
+    header('Content-Transfer-Encoding: binary');
+    header('Content-Length: ' . strlen($r)); // provide file size
+    header('Connection: close');
+	header('User-Agent: Awesome-Octocat-App');
+    return $r;
+}
+$user_obj = json_decode($user);
+
+$email = json_decode(download("https://api.github.com/user/emails?access_token=".$obj->{'access_token'}), TRUE);
+
+echo '<script>';
+
+echo 'console.log("username : '.$user_obj->{'login'}.'");';
+echo 'console.log("id : '.$user_obj->{'id'}.'");';
+echo 'console.log("profile image : '.$user_obj->{'avatar_url'}.'");';
+echo 'console.log("type : '.$user_obj->{'type'}.'");';
+echo 'console.log("name : '.$user_obj->{'name'}.'");';
+echo 'console.log("blog : '.$user_obj->{'blog'}.'");';
+echo 'console.log("email : '.$email[0]['email'].'");';
+echo '</script>';
+
+?>
+
+  </head>
+  <body>
+  <div class="ts container">
+  
+  <br>
+   <br>
+   
+   <div class="ts left aligned slate" id="info">
+   <table>
+   <tr>
+   <td rowspan="2"><span class="description"><div id="gimg"><?php echo '<img src="'.$user_obj->{'avatar_url'}.'" width="96" height="96"></img>'; ?></div></span></td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;<span class="header"><div id="gname"><?php echo $user_obj->{'name'}; ?></div></span></td>
+	</tr>
+	<tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;<span class="description"><div id="gemail"><?php echo  $email[0]['email']; ?></div></span></td>
+	</tr>
+	</table>
+	
+	<br>
+	<div style="display:inline-block; vertical-align: middle;">
+	<button id="logout" class="ts negative basic button" onclick="history.go(-1);" >登出</button>&nbsp;&nbsp;&nbsp;&nbsp;
+	<a class="ts basic button" href="redirect.php?url=<?php echo $_SESSION["url"]; ?>" id="ok">確定</a>
+	</div>
+
+	</div>
+
+  
+
+
+</div>
+  </body>
+</html>
