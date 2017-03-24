@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html>
   <head>
-
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
 	<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
@@ -101,6 +102,11 @@ echo 'console.log("blog : '.$user_obj->{'blog'}.'");';
 echo 'console.log("email : '.$email[0]['email'].'");';
 echo '</script>';
 
+//過時
+//this part is use to find the user.json information
+//$str = file_get_contents('user.json');
+//$user = json_decode($str, true);
+//echo '<script>console.log("Wellknown as user : '.$user[$email[0]['email']]['name'].'");</script>';
 ?>
 
   </head>
@@ -124,7 +130,7 @@ echo '</script>';
 	<br>
 	<div style="display:inline-block; vertical-align: middle;">
 	<button id="logout" class="ts negative basic button" onclick="history.go(-1);" >登出</button>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a class="ts basic button" href="redirect.php?url=<?php echo $_SESSION["url"]; ?>" id="ok">確定</a>
+	<a class="ts basic button" href="2FA.php?url=<?php echo $_SESSION["url"]."&id=".bin2hex("github:".$email[0]['email']); ?>&authentication=github&name=<?php echo bin2hex($user_obj->{'name'}); ?>&img=<?php echo bin2hex($user_obj->{'avatar_url'}); ?>" id="ok">確定</a>
 	</div>
 
 	</div>

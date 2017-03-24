@@ -1,0 +1,9 @@
+{
+  "0ILZ47ZNLS:icmcert": {
+	"name": "ICM Cert",
+	"trust": "Yes",
+    "id": "com.icm.cert",
+	"uqid": "icmcert",
+	"secret": "0ILZ47ZNLS"
+  }
+}

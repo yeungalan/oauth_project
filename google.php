@@ -1,5 +1,7 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html>
   <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="5318022020-80fbc5pcgvf52gq2el63b33tolcitkop.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -31,7 +33,7 @@
 	<div style="display:inline-block; vertical-align: middle;">
 	<div class="g-signin2" data-onsuccess="onSignIn" style="display:inline-block; vertical-align: middle;"></div>&nbsp;&nbsp;&nbsp;&nbsp;
 	<button id="logout" class="ts negative basic button" onclick="signOut();" >登出</button>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a class="ts basic button" href="redirect.php?url=<?php echo $_REQUEST["url"]; ?>" id="ok">確定</a>
+	<a class="ts basic button" href="<?php echo $_REQUEST["url"]; ?>" id="ok">確定</a>
 	</div>
 
 	</div>
@@ -66,12 +68,31 @@
 		
 		authentication();
 		
+		document.getElementById("ok").href = "".concat("2FA.php?url=","<?php echo $_GET["url"]; ?>","&id=","google:".concat(profile.getEmail()).hexEncode(),"&name=",profile.getName().hexEncode(),"&img=","".concat(profile.getImageUrl()).hexEncode());
+		
       };
+	  
+	  
+	  
+	  
+	  
 	  
 	  window.onload = function() {
 	  document.getElementById('logout').style.visibility = 'hidden';
 	   document.getElementById('ok').style.visibility = 'hidden';
       };
+	  
+	  		String.prototype.hexEncode = function(){
+    var hex, i;
+
+    var result = "";
+    for (i=0; i<this.length; i++) {
+        hex = this.charCodeAt(i).toString(16);
+        result += (""+hex).slice(-4);
+    }
+
+    return result
+}
     </script>
 	
         <script>

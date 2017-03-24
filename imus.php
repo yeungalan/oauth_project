@@ -1,7 +1,8 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html>
 <head>
 <title>Login Checking System</title>
-
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
 <link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.min.css">
  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
@@ -109,12 +110,26 @@ $(document).ready(function(){
 				<!--set speftic link to main page -->
 				userid = $('#username').val();
 				authentication();
-				window.location.replace("redirect.php?url=" + '<?php echo $_SESSION["url"]; ?>' + "&userid=" + $('#username').val() + "&authentication=imus");
+				
+					window.location.replace("2FA.php?url=".concat('<?php echo $_SESSION["url"]; ?>',"&id=","imus:".concat(userid).hexEncode(),"&name=",userid.hexEncode(),"&img=","http://".concat(window.location.host,"/img/imus.png").hexEncode()));
+				
 				}, 2000);}
 				<!--else action -->
 			else {  $("#pwerr").show(1000); }
 	   });
     });
+	
+			String.prototype.hexEncode = function(){
+    var hex, i;
+
+    var result = "";
+    for (i=0; i<this.length; i++) {
+        hex = this.charCodeAt(i).toString(16);
+        result += (""+hex).slice(-4);
+    }
+
+    return result
+}
 </script>
         <script>
          var authentication=function(){
@@ -122,7 +137,7 @@ $(document).ready(function(){
 		$.get("authentication.php",
     {
         userid: userid,
-		authentication: "google"
+		authentication: "imus"
     },
     function(data, status){
         console.log(status);
