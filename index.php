@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <?php
+  <?php  
 	if(isset($_REQUEST["url"])!==True){
 		header("Refresh: 0; url=error.php?from=index.php&error=URL parameter not detected");
 	die();
