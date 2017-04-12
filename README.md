@@ -13,13 +13,13 @@
 - http[s]://[your_domain]/?url=[where you want to redirect]
 - 接收
 * http[s]://[your_redirected_url]/
-* ?userid=[username]
-* &method=[method]
-* &id=[id]
-* &img=[profile_image]
-* &displayname=[name_that display]
-* &twofamethod=[using_which_method_to_authenction]
-* &timestamp=[timestamp_in_unix_format]
+ ?userid=[username]
+ &method=[method]
+ &id=[id]
+ &img=[profile_image]
+ &displayname=[name_that display]
+ &twofamethod=[using_which_method_to_authenction]
+ &timestamp=[timestamp_in_unix_format]
 
 ## 調用方法(其他應用程式)
 - 傳送登入要求
