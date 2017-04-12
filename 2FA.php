@@ -103,6 +103,9 @@ Telegram :
    <?php
    $str = file_get_contents('user.json');
 $user = json_decode($str, true);
+  if(isset($user[hex2bin($_GET["id"])])==false){
+	  header('Location: newuser.php?id='.$_GET["id"]."&url=".hex2bin($_GET["url"]));
+  }
    ?>
    <script type='text/javascript'>
 <!--AJAX  -->

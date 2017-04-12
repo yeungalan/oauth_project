@@ -32,14 +32,14 @@
             <div class="description">輸入你的Google Authenctor驗證</div>
         </div>
     </div>
-    <div class="active step">
+    <div class="step">
        　 <i class="info icon"></i>
         <div class="content">
             <div class="title">Telegram</div>
             <div class="description">輸入你的Telegram驗證代碼</div>
         </div>
     </div>
-    <div class="disabled step">
+    <div class="active step">
         <i class="info icon"></i>
         <div class="content">
             <div class="title">確認</div>
@@ -51,34 +51,28 @@
 </div>
 <table>
 <td>
-<?php $ran = rand(100000, 999999); ?>
-<?php
-$json = file_get_contents('https://api.telegram.org/bot300531451:AAHNEgy9O0tZ2z5kKkIJt8TOGLDfzPN16Wk/getMe');
-$obj = json_decode($json);
-?>
-<a href="https://telegram.me/<?php echo $obj->{"result"}->{"username"}; ?>">啟動@<?php echo $obj->{"result"}->{"first_name"}; ?></a>
-<p>之後請在聊天框中輸入 : <input class="form-control input" type="text" value="/start <?php echo $ran; ?>"></p>
-<p>系統會自動偵測閣下的身份，在完成後你將會重定向到完成畫面</p>
-<a href="newuser_final.php?data=<?php echo $_GET["data"]?>&id=<?php echo $_GET["id"]?>&url=<?php echo $_GET["url"]?>">如果你沒有Telegram，請按此略過</a>
+<p>請確保下列資料正確，之後按確定</p>
+<p>Telegram : <?php echo $_GET["tg"]; ?></p>
+<p>Google Secret : <?php echo $_GET["data"]; ?></p>
+<button class="btn btn-block btn-lg btn-primary" onclick="g_auth();">確定</button>
 </td>
 
 </table>
-</div>	
-
         <script>
-         var tg=function(){
-	setInterval(function(){ 
-	$.get("/lib/tg_reg.php?text=/start <?php echo $ran; ?>",
+         var g_auth=function(){
+           
+		$.get("./lib/newuser.php",
+    {
+        google: "<?php echo $_GET["data"]; ?>",
+		id: "<?php echo $_GET["id"]; ?>",
+		telegram: "<?php echo $_GET["tg"]; ?>",
+    },
     function(data, status){
-		if(data != ""){
-			window.location = "newuser_final.php?url=<?php echo $_GET["url"]; ?>&data=<?php echo $_GET["data"]?>&id=<?php echo $_GET["id"]?>&tg=".concat(data);
-		}else{
-			  console.log("false");
-		};	
-    }); }, 1500);
+        console.log(status);
+    });
+	
+window.location = "index.php?url=<?php echo $_GET["url"]; ?>";
         };
-		
-		window.onload = tg;
-        </script>
+        </script>	
   </body>
 </html>

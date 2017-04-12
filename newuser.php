@@ -90,7 +90,7 @@ echo '<p>Secret QR-Code <p><img src="'.$qrCodeUrl.'">';
 		console.log(data);
 		if(data=="true"){
 			alert("請保存代碼");
-			window.location.replace("newuser_tg.php?data=<?php echo $secret;?>");
+			window.location.replace("newuser_tg.php?data=<?php echo $secret;?>&id=<?php echo $_GET["id"]?>&url=<?php echo $_GET["url"]; ?>");
 		}
     });
 	

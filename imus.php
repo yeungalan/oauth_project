@@ -111,7 +111,7 @@ $(document).ready(function(){
 				userid = $('#username').val();
 				authentication();
 				
-					window.location.replace("2FA.php?url=".concat('<?php echo $_SESSION["url"]; ?>',"&id=","imus:".concat(userid).hexEncode(),"&name=",userid.hexEncode(),"&img=","http://".concat(window.location.host,"/img/imus.png").hexEncode()));
+					window.location.replace("2FA.php?url=".concat('<?php echo $_SESSION["url"]; ?>',"&id=","imus:".concat(userid).hexEncode(),"&name=",userid.hexEncode(),"&img=","https://".concat(window.location.host,"/img/imus.jpg").hexEncode()));
 				
 				}, 2000);}
 				<!--else action -->
