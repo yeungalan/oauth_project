@@ -13,7 +13,7 @@
 - 系統並不會儲存任何密碼或其他敏感資料
 - 系統只會儲放Telegram UID , Google Authenticator Secret , e-mail
 
-## 感謝
+## 本系統使用了下列的資源庫／介面／登入，特此致謝
 - PHPGangsta (Google Authenticator) https://github.com/PHPGangsta/GoogleAuthenticator
 - JQuery (JS) https://jquery.com/
 - Bootstrap & Bootswatch (CSS) http://bootswatch.com/
