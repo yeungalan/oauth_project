@@ -1,10 +1,11 @@
 <?php
 //call api
+include "../config.php";
 require_once 'g_auth_lib.php';
 
 $ga = new PHPGangsta_GoogleAuthenticator();
 
-$str = file_get_contents('../user.json');
+$str = file_get_contents('../'.$user_json_name);
 $json = json_decode($str, true);
 
 //verfiy code

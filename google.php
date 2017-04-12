@@ -1,9 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
+  <?php
+include "config.php";
+?>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="5318022020-80fbc5pcgvf52gq2el63b33tolcitkop.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="<?php echo $google_api_url?>">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 	<link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
 	<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">

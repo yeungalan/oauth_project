@@ -1,6 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
+  <?php
+include "config.php";
+?>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
 <link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
@@ -53,7 +56,7 @@
 <td>
 <?php $ran = rand(100000, 999999); ?>
 <?php
-$json = file_get_contents('https://api.telegram.org/bot300531451:AAHNEgy9O0tZ2z5kKkIJt8TOGLDfzPN16Wk/getMe');
+$json = file_get_contents('https://api.telegram.org/bot'.$telegram_bot_id.'/getMe');
 $obj = json_decode($json);
 ?>
 <a href="https://telegram.me/<?php echo $obj->{"result"}->{"username"}; ?>">啟動@<?php echo $obj->{"result"}->{"first_name"}; ?></a>

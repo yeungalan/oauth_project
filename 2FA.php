@@ -1,4 +1,7 @@
 ﻿<!DOCTYPE html>
+<?php
+include "config.php";
+?>
 <html>
   <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -101,7 +104,7 @@ Telegram :
 
    </div>
    <?php
-   $str = file_get_contents('user.json');
+   $str = file_get_contents($user_json_name);
 $user = json_decode($str, true);
   if(isset($user[hex2bin($_GET["id"])])==false){
 	  header('Location: newuser.php?id='.$_GET["id"]."&url=".hex2bin($_GET["url"]));
@@ -142,7 +145,7 @@ $(document).ready(function(){
         <script>
          var tg=function(){
            
-		$.get("https://api.telegram.org/bot300531451:AAHNEgy9O0tZ2z5kKkIJt8TOGLDfzPN16Wk/sendMessage",
+		$.get("https://api.telegram.org/bot".concat("<?php echo $telegram_bot_id; ?>","/sendMessage"),
     {
         chat_id: "<?php echo $user[hex2bin($_GET["id"])]["telegram"]; ?>",
 		text: "二步驟登入，IP<?php echo $_SERVER['REMOTE_ADDR']; ?>正在登入，如果你確認相關登入是閣下所發出，請按確認，否則請按拒絕",
@@ -153,7 +156,7 @@ $(document).ready(function(){
     });
 	
 	setInterval(function(){ 
-	$.get("https://api.telegram.org/bot300531451:AAHNEgy9O0tZ2z5kKkIJt8TOGLDfzPN16Wk/getUpdates",
+	$.get("https://api.telegram.org/bot".concat("<?php echo $telegram_bot_id; ?>","/getUpdates"),
     function(data, status){
 		if(JSON.stringify(data).replace("", "").indexOf("\u78ba\u8a8d(<?php echo $ran; ?>)") >= 0){
 			$("#tg").hide(); 

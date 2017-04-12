@@ -1,6 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
+  <?php
+include "config.php";
+?>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <?php  
 	if(isset($_REQUEST["url"])!==True){

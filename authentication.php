@@ -1,6 +1,9 @@
 <?php
+include "config.php";
+?>
+<?php
 session_start();
-$jsonstr = file_get_contents('user.json');
+$jsonstr = file_get_contents($user_json_name);
 $json = json_decode($jsonstr, true);
 $_SESSION["login"]=($_GET["hash"]);
 $str = hex2bin($_GET["hash"]);

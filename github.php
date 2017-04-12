@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <?php
+include "config.php";
+?>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
 	<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	<?php
 	session_start();
+	
+	$client_id = $github_client_id;
+$url = $github_client_url;
+$client_secret = $github_clint_secret;
+
+	
 	if(isset($_GET["redirect"])!==False){
 		if (isset($_GET["url"])){
     $_SESSION["url"]=$_GET["url"];
     }
-		header("Refresh: 0; url=https://github.com/login/oauth/authorize?response_type=code&client_id=0982c21b9c3db83c40b9&redirect_uri=https://oauth.alanyeung.co/github.php&scope=user:email");
+		header("Refresh: 0; url=https://github.com/login/oauth/authorize?response_type=code&client_id=".$client_id."&redirect_uri=".$url."&scope=user:email");
 	die();
 	}
 		?>
@@ -33,10 +42,6 @@
         </script>
 	
 <?php
-$client_id = "0982c21b9c3db83c40b9";
-$url = "https://oauth.alanyeung.co/github.php";
-$client_secret = "e618aee8256aa36feba9aa02e71777f25ebb3eb9";
-
 
 $json = file_get_contents('https://github.com/login/oauth/access_token/?client_id='.$client_id.'&client_secret='.$client_secret.'&code='.$_GET["code"].'&redirect_uri='.$url.'&format=json');
 
