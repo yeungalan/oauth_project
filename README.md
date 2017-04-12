@@ -1,4 +1,4 @@
-# oauth_project
+# OAuth API
 功能
 -  二步驟驗證(Telegram & Google二步驟)
 -  非網頁應用程式登入
