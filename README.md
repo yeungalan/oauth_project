@@ -12,3 +12,14 @@
 ![Image](http://i.imgur.com/91YxEj6.png)
 - 系統並不會儲存任何密碼或其他敏感資料
 - 系統只會儲放Telegram UID , Google Authenticator Secret , e-mail
+
+## 感謝
+- PHPGangsta (Google Authenticator) https://github.com/PHPGangsta/GoogleAuthenticator
+- JQuery (JS) https://jquery.com/
+- Bootstrap & Bootswatch (CSS) http://bootswatch.com/
+- TocasUI (CSS) https://tocas-ui.com/
+- Google OAuth (Authenction) https://google.com
+- Telegram (Authenction) https://telegram.org
+- Github (Authenction) https://github.com
+- IMUS (Authenction) http://imuslab.com
+
