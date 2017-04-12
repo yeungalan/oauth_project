@@ -18,8 +18,7 @@
 - 傳送登入要求
 - http[s]://[your_domain]/?url=api/ok.html
 - 接收
-- http[s]://[your_domain]/?api_key=[api_key_that_spefticed_in_api.json]
-- JSON 格式
+- http[s]://[your_domain]/?api_key=[api_key_that_spefticed_in_api.json] (JSON 格式)
 
 ## 運作原理
 ![Image](http://i.imgur.com/91YxEj6.png)
