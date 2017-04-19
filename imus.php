@@ -22,7 +22,7 @@ session_start();
 //if login AJAX was executed , run from here
 if(isset($_GET["chk"])){
 $ch = curl_init();
-$source = 'http://123.203.74.171:8080/imus/api/checkpw.php?username='.$_GET["username"].'&pw='.bin2hex(hash("sha256",md5($_GET["pw"])));
+$source = 'http://123.203.74.171:8080/imus/api/checkpw.php?username='.$_GET["username"].'&pw='.bin2hex(hash("sha256",hash("sha512",md5(strtolower($_GET["pw"])))));
 curl_setopt($ch, CURLOPT_URL, $source);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $data = curl_exec ($ch);
@@ -33,10 +33,9 @@ fputs($file, $data);
 fclose($file);
 $result =  str_replace("extloginhandler.php","http://imuslab.com/imus/api/extloginhandler.php",file_get_contents("imus.html"));
 echo $result;
-
 //set session id
 if (strpos($result, 'True') == true) {
-$_SESSION["login"] = hash("sha256",md5($_GET["username"]));
+$_SESSION["login"] = hash("sha512",md5($_GET["username"]));
 }else{ 
 session_destroy();
 }
