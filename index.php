@@ -22,6 +22,7 @@ include "config.php";
 	<link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
 <link rel="stylesheet" href="//cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
 <link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <style>
 
@@ -31,12 +32,18 @@ include "config.php";
   <div class="ts container">
 
   <br>
+  <?php
+  if($announcement==""){
+  }else{
+	  echo '<div class="alert alert-'.$announcementgrade.'" role="alert"><i class="fa fa-asterisk fa-2" aria-hidden="true"></i> '.$announcement.'</div>';
+  }
+  ?>
+  <br>
   
   <div class="ts slate">
   <p>以下程式或網站正嘗試登入</p>
  
   <p><?php echo $_REQUEST["url"]; ?></p>
-  
 </div>
 <br>
   <div class="ts fluid vertical buttons">
