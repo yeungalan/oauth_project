@@ -65,15 +65,16 @@ include "config.php";
     <summary>
         <i class="dropdown icon"></i>  
 		<?php 
+		$domain = parse_url($_REQUEST["url"]);
   if(strpos($_REQUEST["url"],"127.0.0.1")===False){
-  echo $_REQUEST["url"];
+  echo $domain["host"];
   }else{
   echo "本地端應用程式";
   
   }
   ?>
   		<?php 
-		$domain = parse_url($_REQUEST["url"]);
+		
 		if($obj->{$dev}->{"verified"} == "true"){
 			if($domain["host"] == $obj->{$dev}->{"usualdomain"} || $domain["host"] == "127.0.0.1"  || $domain["host"] == "localhost")
 			echo '<i class="fa fa-shield" aria-hidden="true" ></i>';
