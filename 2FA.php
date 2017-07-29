@@ -1,9 +1,20 @@
 ﻿<!DOCTYPE html>
 <?php
 include "config.php";
+
+  session_start();
+	if(isset($_SESSION["current"])!==True || $_SESSION["current"] !== 2){
+		header("Refresh: 0; url=error.php?from=2FA.php&error=Forbidden Skipping");
+	die();
+	}else{
+		$_SESSION["current"] = 3;
+	}
+	
+	$_SESSION["acceptauth"] = true;
 ?>
 <html>
   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="5318022020-80fbc5pcgvf52gq2el63b33tolcitkop.apps.googleusercontent.com">
@@ -35,8 +46,8 @@ include "config.php";
 </center>
 <table>
 <tr>
-<td><img id="tgimg" src="./img/tg.png" width="500"></td>
-<td><img id="gauthimg" src="./img/g_auth.png" width="500"></td>
+<td><img class="ts fluid image" id="tgimg" src="./img/tg.png"></td>
+<td><img  class="ts fluid image" id="gauthimg" src="./img/g_auth.png"></td>
 </tr>
 </table>
  </div>

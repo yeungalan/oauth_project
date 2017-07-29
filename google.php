@@ -3,7 +3,15 @@
   <head>
   <?php
 include "config.php";
+  session_start();
+	if(isset($_SESSION["current"])!==True || $_SESSION["current"] !== 1){
+		header("Refresh: 0; url=error.php?from=google.php&error=Forbidden Skipping");
+	die();
+	}else{
+		$_SESSION["current"] = 2;
+	}
 ?>
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="<?php echo $google_api_url?>">

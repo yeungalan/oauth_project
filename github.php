@@ -3,7 +3,9 @@
   <head>
   <?php
 include "config.php";
+
 ?>
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
 	<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
@@ -21,6 +23,13 @@ $client_secret = $github_clint_secret;
     $_SESSION["url"]=$_GET["url"];
     }
 		header("Refresh: 0; url=https://github.com/login/oauth/authorize?response_type=code&client_id=".$client_id."&redirect_uri=".$url."&scope=user:email");
+		
+			if(isset($_SESSION["current"])!==True || $_SESSION["current"] !== 1){
+		header("Refresh: 0; url=error.php?from=github.php&error=Forbidden Skipping");
+	die();
+	}else{
+		$_SESSION["current"] = 2;
+	}
 	die();
 	}
 		?>

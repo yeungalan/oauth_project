@@ -3,6 +3,9 @@ include "config.php";
 ?>
 <?php
 session_start();
+
+if($_SESSION["acceptauth"] == true && isset($_SESSION["acceptauth"]) == true){
+
 $jsonstr = file_get_contents($user_json_name);
 $json = json_decode($jsonstr, true);
 $_SESSION["login"]=($_GET["hash"]);
@@ -16,4 +19,9 @@ $_SESSION["twofamethod"]=$_GET["auth"];
 
 $_SESSION["name"]=hex2bin($_GET["name"]);
 $_SESSION["img"]=hex2bin($_GET["img"]);
+
+echo "SUCCESS";
+}else{
+	header("Refresh: 0; url=error.php?from=authentication.php&error=Access Denied");
+}
 ?>
