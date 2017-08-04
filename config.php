@@ -14,7 +14,7 @@ $requireauthenction = "false"; //false = allow all internet user use this servic
 $authenctionkey = "" //authenction password
   
   //optional settings experiemnt//
-$enableipgeo = "true"; //using ip to find geolocation
+$enableipgeo = "false"; //using ip to find geolocation
 $banlocation = "CN,HK,VN,JP"; //ban speftic location to access system , use , to split each location
-$dbipcsv = "dbip-country-2017-08.csv";
+$dbipcsv = "dbip-country-2017-08.csv"; //dl it from db-ip.com and place on root
 ?>
