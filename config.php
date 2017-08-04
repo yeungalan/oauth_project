@@ -1,4 +1,5 @@
 ﻿<?php
+include "/lang/zh-HK.php";
 $user_json_name = "1nbfa.json"; //使用者儲存位置
 $github_client_id = "0982c21b9c3db83c40b9"; //Github OAuth Api Key
 $github_clint_secret = "e618aee8256aa36feba9aa02e71777f25ebb3eb9"; //Github OAuth Api Keys
