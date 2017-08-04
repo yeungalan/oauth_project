@@ -51,8 +51,6 @@ $_SESSION["current"] = 1;
 	  $location = file_get_contents((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/lib/dbip.php?ip=".$_SERVER['REMOTE_ADDR']);
 	  if(strpos($banlocation,$location)!==False){
 		  header("Refresh: 0; url=error.php?from=index.php&error=Your Region : ".$location." (IP:".$_SERVER['REMOTE_ADDR'].") Is Prohibited Access");
-	  }else{
-		  echo $location;
 	  }
   }
   //WARNING
