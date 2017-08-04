@@ -11,4 +11,9 @@ $announcementgrade = "info"; //success , info , warning , danger or keep "" for 
 
 $requireauthenction = "false"; //false = allow all internet user use this services , true = require key for using this system
 $authenctionkey = "" //authenction password
+  
+  //optional settings experiemnt//
+$enableipgeo = "true"; //using ip to find geolocation
+$banlocation = "CN,HK,VN,JP"; //ban speftic location to access system , use , to split each location
+$dbipcsv = "dbip-country-2017-08.csv";
 ?>
