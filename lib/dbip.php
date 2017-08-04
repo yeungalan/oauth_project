@@ -1,5 +1,7 @@
 <?php
-include '../config.php';
+
+function geoip($dbipcsv, $ip){
+
 $csvData = file_get_contents($dbipcsv);
 $lines = explode(PHP_EOL, $csvData);
 $rangeArray = array();
@@ -7,7 +9,7 @@ foreach ($lines as $line) {
     $rangeArray[] = str_getcsv($line);
 }
 
-$input = $_GET["ip"];
+$input = $ip;
 $array_input = explode(".", $input);
 
 foreach($rangeArray as $current)
@@ -23,7 +25,7 @@ if((int)$array_input[0] >= (int)$array_start[0]){
 					if((int)$array_input[2] <= (int)$array_stop[2]){
 						if((int)$array_input[3] >= (int)$array_start[3]){
 							if((int)$array_input[3] <= (int)$array_stop[3]){
-								echo $current[2];
+								$data = $current[2];
 							}
 						}
 					}
@@ -34,6 +36,9 @@ if((int)$array_input[0] >= (int)$array_start[0]){
 }	
 	
 
+}
+
+	return $data;
 }
 
 ?>

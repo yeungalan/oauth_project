@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
   <?php
   session_start();
 include "config.php";
-
+include "lib/dbip.php";
 $_SESSION["current"] = 1;
 ?>
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,12 +47,10 @@ $_SESSION["current"] = 1;
 	}
   
   //WARNING
-  if($enableipgeo=="true"){
-	  $location = file_get_contents((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/lib/dbip.php?ip=".$_SERVER['REMOTE_ADDR']);
-	  if(strpos($banlocation,$location)!==False){
-		  header("Refresh: 0; url=error.php?from=index.php&error=Your Region : ".$location." (IP:".$_SERVER['REMOTE_ADDR'].") Is Prohibited Access");
-	  }
+  if(strpos($banlocation, geoip($dbipcsv,$_SERVER['REMOTE_ADDR'])) !== false){
+	  header("Refresh: 0; url=error.php?from=index.php&error=Your Region : ".geoip($dbipcsv,$_SERVER['REMOTE_ADDR'])." (IP:".$_SERVER['REMOTE_ADDR'].") Is Prohibited Access");
   }
+
   //WARNING
   
   if($announcement=="" || $announcementgrade==""){
