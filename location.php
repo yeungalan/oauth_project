@@ -23,8 +23,8 @@ header("Refresh: 0; url=error.php?from=location.php&error=Not Implemented Functi
   <div class="ts container">
 <center>
   <br>
-<p style="font-size:20px;">程式正定位你的位置</p>
-<p style="font-size:15px;">本頁面將會於完成後重新定向。如果閣下不同意本網站使用你的位置，則閣下可能無法正常登入。</p>
+<p style="font-size:20px;"><?php echo $lang["location_title"]; ?></p>
+<p style="font-size:15px;"><?php echo $lang["location_des"]; ?></p>
 <br>
    <i style="font-size:400px;text-align:center" class="fa fa-location-arrow fa-6" aria-hidden="true"></i>
    </center>

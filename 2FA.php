@@ -42,7 +42,7 @@ include "config.php";
 
 <div id="select">
 <center>
-<p>請選擇您的驗證方法</p>
+<p><?php echo $lang['fa_authmethod']; ?></p>
 </center>
 <table>
 <tr>
@@ -55,29 +55,29 @@ include "config.php";
  
 <div id="tg">
 <center>
-Telegram :
+<?php echo $lang['fa_tg']; ?>
 <br>
 <div class="ts active inline massive loader"></div>
 <br>
-等待確認中
+<?php echo $lang['fa_waitconfirm']; ?>
 <br>
-請勿關閉本頁面，系統會在驗證完成後自動重定向。
+<?php echo $lang['fa_redirwait']; ?>
 </center>
 </div>
 
 
 <div class="alert alert-dismissible alert-danger" id="gauth_f">
-  <strong>錯誤</strong> 代碼不正確
+  <strong><?php echo $lang['fa_err']; ?></strong><?php ' '.$lang['fa_invaildcode']?>
 </div>
 
 <div id="gauth">
 <center>
-兩步驟驗證(Google Authenticator) :
+<?php echo $lang['fa_gauth']; ?>
 <br>
-<p>請開啟Google Authenticator並輸入所見的六位數字代碼</p>
-<p>請注意：相關代碼只於30秒內有效，請儘快輸入</p>
+<p><?php echo $lang['fa_gauth6']; ?></p>
+<p><?php echo $lang['fa_gauth30']; ?></p>
 <div class="form-group">
-  <label class="control-label" for="inputLarge">六位數字代碼</label>
+  <label class="control-label" for="inputLarge"><?php echo $lang['fa_code']; ?></label>
   <input class="form-control input-lg" type="text" id="gauthcode">
 </div>
 
@@ -90,25 +90,25 @@ Telegram :
 
 <div id="success">
 <center>
-二步驟登入驗證
+<?php echo $lang["fa_title"]; ?>
 <br>
 <br>
 <br>
-確認完成
+<?php echo $lang["fa_complete"]; ?>
 <br>
-請勿關閉本頁面，系統將會自動重定向。
+<?php echo $lang["fa_red"]; ?>
 </center>
 </div>
 
 <div id="fail">
 <center>
-二步驟登入驗證
+<?php echo $lang["fa_title"]; ?>
 <br>
 <br>
 <br>
-失敗
+<?php echo $lang["fa_fail"]; ?>
 <br>
-請再試一次
+<?php echo $lang["fa_retry"]; ?>
 </center>
 </div>
 
@@ -159,8 +159,8 @@ $(document).ready(function(){
 		$.get("https://api.telegram.org/bot".concat("<?php echo $telegram_bot_id; ?>","/sendMessage"),
     {
         chat_id: "<?php echo $user[hex2bin($_GET["id"])]["telegram"]; ?>",
-		text: "二步驟登入，IP<?php echo $_SERVER['REMOTE_ADDR']; ?>正在登入，如果你確認相關登入是閣下所發出，請按確認，否則請按拒絕",
-		reply_markup: '{"keyboard":[["確認(<?php echo $ran; ?>)","拒絕(<?php echo $ran; ?>)"]],"one_time_keyboard":true}'
+		text: "<?php echo $lang["fa_tg1"].$_SERVER['REMOTE_ADDR'].$lang["fa_tg2"]; ?>",
+		reply_markup: '{"keyboard":[["<?php echo $lang["fa_tgcon"]."(".$ran.")"; ?>","<?php echo $lang["fa_tgrej"]."(".$ran.")"; ?>"]],"one_time_keyboard":true}'
     },
     function(data, status){
         console.log(status);
@@ -169,7 +169,7 @@ $(document).ready(function(){
 	setInterval(function(){ 
 	$.get("https://api.telegram.org/bot".concat("<?php echo $telegram_bot_id; ?>","/getUpdates"),
     function(data, status){
-		if(JSON.stringify(data).replace("", "").indexOf("\u78ba\u8a8d(<?php echo $ran; ?>)") >= 0){
+		if(JSON.stringify(data).replace("", "").indexOf("<?php echo $lang["fa_tgconunicode"]."(".$ran; ?>)") >= 0){
 			$("#tg").hide(); 
 			$("#success").show(); 
 			$.get("authentication.php", {hash : "<?php echo $_GET["id"]; ?>",auth : "telegram",name : "<?php echo $_GET["name"]; ?>",img : "<?php echo $_GET["img"]; ?>"},function( data ) {
@@ -179,7 +179,7 @@ $(document).ready(function(){
 		}else{
 			  console.log("false");
 		};
-		if(JSON.stringify(data).replace("", "").indexOf("\u62d2\u7d55(<?php echo $ran; ?>)") >= 0){
+		if(JSON.stringify(data).replace("", "").indexOf("<?php echo $lang["fa_tgregunicode"]."(".$ran; ?>)") >= 0){
 			$("#tg").hide(); 
 			$("#fail").show(); 
 		};

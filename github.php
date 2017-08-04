@@ -143,8 +143,8 @@ echo '</script>';
 	
 	<br>
 	<div style="display:inline-block; vertical-align: middle;">
-	<button id="logout" class="ts negative basic button" onclick="history.go(-1);" >登出</button>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a class="ts basic button" href="2FA.php?url=<?php echo $_SESSION["url"]."&id=".bin2hex("github:".$email[0]['email']); ?>&authentication=github&name=<?php echo bin2hex($user_obj->{'name'}); ?>&img=<?php echo bin2hex($user_obj->{'avatar_url'}); ?>" id="ok">確定</a>
+	<button id="logout" class="ts negative basic button" onclick="history.go(-1);" ><?php echo $lang['auth_logout']; ?></button>&nbsp;&nbsp;&nbsp;&nbsp;
+	<a class="ts basic button" href="2FA.php?url=<?php echo $_SESSION["url"]."&id=".bin2hex("github:".$email[0]['email']); ?>&authentication=github&name=<?php echo bin2hex($user_obj->{'name'}); ?>&img=<?php echo bin2hex($user_obj->{'avatar_url'}); ?>" id="ok"><?php echo $lang['auth_ok']; ?></a>
 	</div>
 
 	</div>

@@ -62,12 +62,12 @@ if (isset($_GET["url"])){
 
 <!--Error -->
 <div class="alert alert-dismissible alert-danger" id="pwerr">
-<strong>錯誤</strong>  IMUS回傳使用者名稱或密碼錯誤
+<strong><?php echo $lang['imus_err']; ?></strong><?php echo "  ".$lang['imus_errd']; ?>
 </div>
 
 <!--Success -->
 <div class="alert alert-dismissible alert-success" id="pwok">
-<strong>成功</strong> 　請稍候,我們將重新定向你到首頁
+<strong><?php echo $lang['imus_ok']; ?></strong><?php echo "  ".$lang['imus_okd']; ?>
 </div>
 
  <br>
@@ -75,23 +75,23 @@ if (isset($_GET["url"])){
  
 <form id="login" class="form-horizontal" action="#" method="GET">
   <fieldset>
-    <legend>使用IMUS系統登入</legend>
+    <legend><?php echo $lang['imus_title']; ?></legend>
     <div class="form-group">
-      <label for="username" class="col-lg-2 control-label">使用者名稱</label>
+      <label for="username" class="col-lg-2 control-label"><?php echo $lang['imus_username']; ?></label>
       <div class="col-lg-10">
-        <input type="text" class="form-control" id="username" placeholder="使用者名稱">
+        <input type="text" class="form-control" id="username" placeholder="<?php echo $lang['imus_username']; ?>">
       </div>
     </div>
     <div class="form-group">
-      <label for="password" class="col-lg-2 control-label">密碼</label>
+      <label for="password" class="col-lg-2 control-label"><?php echo $lang['imus_pwd']; ?></label>
       <div class="col-lg-10">
-        <input type="password" class="form-control" id="password" placeholder="密碼">
+        <input type="password" class="form-control" id="password" placeholder="<?php echo $lang['imus_pwd']; ?>">
       </div>
     </div>
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">重設</button>
-        <button class="btn btn-primary" id="submit">送出</button>
+        <button type="reset" class="btn btn-default"><?php echo $lang['imus_reset']; ?></button>
+        <button class="btn btn-primary" id="submit"><?php echo $lang['imus_submit']; ?></button>
       </div>
     </div>
 

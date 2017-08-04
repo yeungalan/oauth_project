@@ -46,6 +46,17 @@ $_SESSION["current"] = 1;
 	}else{
 	}
   
+  //WARNING
+  if($enableipgeo=="true"){
+	  $location = file_get_contents((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/lib/dbip.php?ip=".$_SERVER['REMOTE_ADDR']);
+	  if(strpos($banlocation,$location)!==False){
+		  header("Refresh: 0; url=error.php?from=index.php&error=Your Region : ".$location." (IP:".$_SERVER['REMOTE_ADDR'].") Is Prohibited Access");
+	  }else{
+		  echo $location;
+	  }
+  }
+  //WARNING
+  
   if($announcement=="" || $announcementgrade==""){
   }else{
 	  echo '<div class="alert alert-'.$announcementgrade.'" role="alert"><i class="fa fa-asterisk fa-2" aria-hidden="true"></i> '.$announcement.'</div>';
@@ -63,7 +74,7 @@ $_SESSION["current"] = 1;
   <br>
   
  <div class="ts heading vertically padded slate">
-  <p>以下程式或網站正嘗試登入</p>
+  <p><?php echo $lang['index_title']; ?></p>
  
 
   <details class="ts accordion" open>
@@ -74,7 +85,7 @@ $_SESSION["current"] = 1;
   if(strpos($_REQUEST["url"],"127.0.0.1")===False){
   echo $domain["host"];
   }else{
-  echo "本地端應用程式";
+  echo $lang['index_application'];
   
   }
   ?>
@@ -87,9 +98,9 @@ $_SESSION["current"] = 1;
 		?>
     </summary>
     <div class="content">
-        <p>開發者 : <?php echo $obj->{$dev}->{"author"}; ?></p>
-		<p>作者網頁 : <?php echo $obj->{$dev}->{"web"}; ?></p>
-		<p>認證日期 : <?php echo $obj->{$dev}->{"date"}; ?></p>
+        <p><?php echo $lang['index_dev']; ?><?php echo $obj->{$dev}->{"author"}; ?></p>
+		<p><?php echo $lang['index_author']; ?><?php echo $obj->{$dev}->{"web"}; ?></p>
+		<p><?php echo $lang['index_date']; ?><?php echo $obj->{$dev}->{"date"}; ?></p>
     </div>
 </details>
 </div>
@@ -98,19 +109,19 @@ $_SESSION["current"] = 1;
   <?php 
     $disable=0;
   if(strpos($_REQUEST["disable"],"M")===False){
-  echo '<a  href="main.php?url='.bin2hex($_REQUEST["url"]).'" class="ts negative button" id="main">Main Server</a>';
+  echo '<a  href="main.php?url='.bin2hex($_REQUEST["url"]).'" class="ts negative button" id="main">'.$lang['index_mainserver'].'</a>';
   $disable =  $disable +1;
   }
   if(strpos($_REQUEST["disable"],"G")===False){
-  echo '<a  href="google.php?url='.bin2hex($_REQUEST["url"]).'" class="ts warning button">Google</a>';
+  echo '<a  href="google.php?url='.bin2hex($_REQUEST["url"]).'" class="ts warning button">'.$lang['index_google'].'</a>';
     $disable =  $disable +1;
   }
   if(strpos($_REQUEST["disable"],"T")===False){
-  echo '<a  href="github.php?url='.bin2hex($_REQUEST["url"]).'" class="ts primary button">Github</a>';
+  echo '<a  href="github.php?url='.bin2hex($_REQUEST["url"]).'" class="ts primary button">'.$lang['index_github'].'</a>';
     $disable =  $disable +1;
   }
   if(strpos($_REQUEST["disable"],"I")===False){
-  echo '<a  href="imus.php?url='.bin2hex($_REQUEST["url"]).'" class="ts inverted button">IMUS</a>';
+  echo '<a  href="imus.php?url='.bin2hex($_REQUEST["url"]).'" class="ts inverted button">'.$lang['index_imus'].'</a>';
     $disable =  $disable +1;
   }	
   

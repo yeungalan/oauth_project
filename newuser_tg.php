@@ -32,26 +32,26 @@ include "config.php";
 <div class="ts massive steps">
     <div class="step">
         <div class="content">
-            <div class="title">Google</div>
-            <div class="description">輸入你的Google Authenctor驗證</div>
+            <div class="title"><?php echo $lang['newuser_google']; ?></div>
+            <div class="description"><?php echo $lang['newuser_googledec']; ?></div>
         </div>
     </div>
     <div class="active step">
        　 <i class="info icon"></i>
         <div class="content">
-            <div class="title">Telegram</div>
-            <div class="description">輸入你的Telegram驗證代碼</div>
+            <div class="title"><?php echo $lang['newuser_telegram']; ?></div>
+            <div class="description"><?php echo $lang['newuser_telegramdec']; ?></div>
         </div>
     </div>
     <div class="disabled step">
         <i class="info icon"></i>
         <div class="content">
-            <div class="title">確認</div>
+            <div class="title"><?php echo $lang['newuser_confirm']; ?></div>
         </div>
     </div>
 </div>
 <div class="ts inverted primary segment">
-    <p>新用戶</p>
+    <p><?php echo $lang['newuser_newuser']; ?></p>
 </div>
 <table>
 <td>
@@ -60,10 +60,10 @@ include "config.php";
 $json = file_get_contents('https://api.telegram.org/bot'.$telegram_bot_id.'/getMe');
 $obj = json_decode($json);
 ?>
-<a href="https://telegram.me/<?php echo $obj->{"result"}->{"username"}; ?>">啟動@<?php echo $obj->{"result"}->{"first_name"}; ?></a>
-<p>之後請在聊天框中輸入 : <input class="form-control input" type="text" value="/start <?php echo $ran; ?>"></p>
-<p>系統會自動偵測閣下的身份，在完成後你將會重定向到完成畫面</p>
-<a href="newuser_final.php?data=<?php echo $_GET["data"]?>&id=<?php echo $_GET["id"]?>&url=<?php echo $_GET["url"]?>">如果你沒有Telegram，請按此略過</a>
+<a href="https://telegram.me/<?php echo $obj->{"result"}->{"username"}; ?>"><?php echo $lang['newuser_lanuch']; ?>@<?php echo $obj->{"result"}->{"first_name"}; ?></a>
+<p><?php echo $lang['newuser_enter']; ?><input class="form-control input" type="text" value="/start <?php echo $ran; ?>"></p>
+<p><?php echo $lang['newuser_enterdes']; ?></p>
+<a href="newuser_final.php?data=<?php echo $_GET["data"]?>&id=<?php echo $_GET["id"]?>&url=<?php echo $_GET["url"]?>"><?php echo $lang['newuser_skip']; ?></a>
 </td>
 
 </table>

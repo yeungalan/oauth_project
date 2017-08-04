@@ -1,6 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
+    <?php
+include "config.php";
+?>
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
@@ -29,30 +32,30 @@
 <div class="ts massive steps">
     <div class="step">
         <div class="content">
-            <div class="title">Google</div>
-            <div class="description">輸入你的Google Authenctor驗證</div>
+            <div class="title"><?php echo $lang['newuser_google']; ?></div>
+            <div class="description"><?php echo $lang['newuser_googledec']; ?></div>
         </div>
     </div>
     <div class="step">
        　 <i class="info icon"></i>
         <div class="content">
-            <div class="title">Telegram</div>
-            <div class="description">輸入你的Telegram驗證代碼</div>
+            <div class="title"><?php echo $lang['newuser_telegram']; ?></div>
+            <div class="description"><?php echo $lang['newuser_telegramdec']; ?></div>
         </div>
     </div>
     <div class="active step">
         <i class="info icon"></i>
         <div class="content">
-            <div class="title">確認</div>
+            <div class="title"><?php echo $lang['newuser_confirm']; ?></div>
         </div>
     </div>
 </div>
 <div class="ts inverted primary segment">
-    <p>新用戶</p>
+    <p><?php echo $lang['newuser_newuser']; ?></p>
 </div>
 <table>
 <td>
-<p>請確保下列資料正確，之後按確定</p>
+<p><?php echo $lang['newuser_final']; ?></p>
 <p>Telegram : <?php echo $_GET["tg"]; ?></p>
 <p>Google Secret : <?php echo $_GET["data"]; ?></p>
 <button class="btn btn-block btn-lg btn-primary" onclick="g_auth();">確定</button>

@@ -6,29 +6,32 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<?php
+include "config.php";
+?>
 </head>
 <body>
 <div class="ts container">
 <br>
 <div class="ts inverted negative card">
     <div class="content">
-        <div class="header">哦不！ 發生錯誤 :(</div>
+        <div class="header"><?php echo $lang["error_header"]; ?></div>
         <div class="description">
-		<p>錯誤描述 : <?php echo $_GET["error"]; ?></p>
-		<p>錯誤URL : <?php echo $_GET["from"]; ?></p>
+		<p><?php echo $lang["error_desc"].$_GET["error"]; ?></p>
+		<p><?php echo $lang["error_url"].$_GET["from"]; ?></p>
 		
-		<p><a onclick="ts('#modal').modal('show');">錯誤詳情</a></p>
+		<p><a onclick="ts('#modal').modal('show');"><?php echo $lang["error_det"]; ?></a></p>
         </div>
     </div>
 	</div>
 
-	<p> oauth.alanyeung.co 錯誤 </p>	
+	<p> oauth.alanyeung.co <?php echo $lang["error_err"]; ?> </p>	
 </div>
 
 <div class="ts modals dimmer">
     <dialog id="modal" class="ts closable tiny modal" data-modal-initialized="true">
         <div class="content">
-		<p>調試信息</p>
+		<p><?php echo (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/"." ".$lang["error_debug"]; ?></p>
 
 		<?php
 		session_start();

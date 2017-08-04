@@ -1,6 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
+    <?php
+include "config.php";
+?>
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
@@ -28,26 +31,26 @@
 <div class="ts massive steps">
     <div class="active step">
         <div class="content">
-            <div class="title">Google</div>
-            <div class="description">輸入你的Google Authenctor驗證</div>
+            <div class="title"><?php echo $lang['newuser_google']; ?></div>
+            <div class="description"><?php echo $lang['newuser_googledec']; ?></div>
         </div>
     </div>
     <div class="step">
        　 <i class="info icon"></i>
         <div class="content">
-            <div class="title">Telegram</div>
-            <div class="description">輸入你的Telegram驗證代碼</div>
+            <div class="title"><?php echo $lang['newuser_telegram']; ?></div>
+            <div class="description"><?php echo $lang['newuser_telegramdec']; ?></div>
         </div>
     </div>
     <div class="disabled step">
         <i class="info icon"></i>
         <div class="content">
-            <div class="title">確認</div>
+            <div class="title"><?php echo $lang['newuser_confirm']; ?></div>
         </div>
     </div>
 </div>
 <div class="ts inverted primary segment">
-    <p>新用戶</p>
+    <p><?php echo $lang['newuser_newuser']; ?></p>
 </div>
 <table>
 <td>
@@ -64,7 +67,7 @@ echo '<p>Secret QR-Code <p><img src="'.$qrCodeUrl.'">';
 </td>
 <td>
 <div class="form-group">
-  <label class="control-label" for="inputLarge">六位數字代碼</label>
+  <label class="control-label" for="inputLarge"><?php echo $lang['newuser_6code']; ?></label>
   <input class="form-control input-lg" type="text" id="gauthcode">
 </div>
 </td>
@@ -90,7 +93,7 @@ echo '<p>Secret QR-Code <p><img src="'.$qrCodeUrl.'">';
         console.log(status);
 		console.log(data);
 		if(data=="true"){
-			alert("請保存代碼");
+			alert("<?php echo $lang['newuser_keepcode']; ?>");
 			window.location.replace("newuser_tg.php?data=<?php echo $secret;?>&id=<?php echo $_GET["id"]?>&url=<?php echo $_GET["url"]; ?>");
 		}
     });

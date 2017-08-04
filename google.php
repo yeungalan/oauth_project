@@ -43,8 +43,8 @@ include "config.php";
 	<br>
 	<div style="display:inline-block; vertical-align: middle;">
 	<div class="g-signin2" data-onsuccess="onSignIn" style="display:inline-block; vertical-align: middle;"></div>&nbsp;&nbsp;&nbsp;&nbsp;
-	<button id="logout" class="ts negative basic button" onclick="signOut();" >登出</button>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a class="ts basic button" href="<?php echo $_REQUEST["url"]; ?>" id="ok">確定</a>
+	<button id="logout" class="ts negative basic button" onclick="signOut();" ><?php echo $lang['auth_logout']; ?></button>&nbsp;&nbsp;&nbsp;&nbsp;
+	<a class="ts basic button" href="<?php echo $_REQUEST["url"]; ?>" id="ok"><?php echo $lang['auth_ok']; ?></a>
 	</div>
 
 	</div>
