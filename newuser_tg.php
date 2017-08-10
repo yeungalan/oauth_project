@@ -72,7 +72,7 @@ $obj = json_decode($json);
         <script>
          var tg=function(){
 	setInterval(function(){ 
-	$.get("/lib/tg_reg.php?text=/start <?php echo $ran; ?>",
+	$.get("./lib/tg_reg.php?text=/start <?php echo $ran; ?>",
     function(data, status){
 		if(data != ""){
 			window.location = "newuser_final.php?url=<?php echo $_GET["url"]; ?>&data=<?php echo $_GET["data"]?>&id=<?php echo $_GET["id"]?>&tg=".concat(data);
