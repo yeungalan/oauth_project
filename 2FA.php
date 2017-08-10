@@ -172,10 +172,22 @@ $(document).ready(function(){
 		if(JSON.stringify(data).replace("", "").indexOf("<?php echo $lang["fa_tgconunicode"]."(".$ran; ?>)") >= 0){
 			$("#tg").hide(); 
 			$("#success").show(); 
-			$.get("authentication.php", {hash : "<?php echo $_GET["id"]; ?>",auth : "telegram",name : "<?php echo $_GET["name"]; ?>",img : "<?php echo $_GET["img"]; ?>"},function( data ) {
-			 console.log(data);
-			});
-			window.location = "redirect.php?url=<?php echo $_GET["url"]; ?>";
+					
+				$.ajax({
+  method: "GET",
+  url: "authentication.php",
+  data: {hash : "<?php echo $_GET["id"]; ?>",auth : "telegram",name : "<?php echo $_GET["name"]; ?>",img : "<?php echo $_GET["img"]; ?>"}			
+})
+  .done(function( data ) {
+    console.log("Finish");
+	console.log(data);
+	setTimeout(function(){
+    	window.location = "redirect.php?url=<?php echo $_GET["url"]; ?>";
+}, 1000);
+
+	
+  });
+  
 		}else{
 			  console.log("false");
 		};
@@ -207,10 +219,20 @@ $(document).ready(function(){
 			$("#gauth").hide(); 
 			$("#gauth_f").hide();
 			$("#success").show(); 
-			$.get("authentication.php", {hash : "<?php echo $_GET["id"]; ?>",auth : "g_auth",name : "<?php echo $_GET["name"]; ?>",img : "<?php echo $_GET["img"]; ?>"},function( data ) {
-			 console.log(data);
-			});
-			window.location = "redirect.php?url=<?php echo $_GET["url"]; ?>";
+			
+			
+	$.ajax({
+  method: "GET",
+  url: "authentication.php",
+  data: {hash : "<?php echo $_GET["id"]; ?>",auth : "g_auth",name : "<?php echo $_GET["name"]; ?>",img : "<?php echo $_GET["img"]; ?>"}			
+})
+  .done(function( data ) {
+    console.log(data);
+		setTimeout(function(){
+    	window.location = "redirect.php?url=<?php echo $_GET["url"]; ?>";
+}, 1000);
+  });
+  
 		}else{
 			$("#gauth_f").show();
 		}

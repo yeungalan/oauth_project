@@ -47,8 +47,10 @@ $_SESSION["current"] = 1;
 	}
   
   //WARNING
+  if($enableipgeo=="true"){
   if(strpos($banlocation, geoip($dbipcsv,$_SERVER['REMOTE_ADDR'])) !== false){
 	  header("Refresh: 0; url=error.php?from=index.php&error=Your Region : ".geoip($dbipcsv,$_SERVER['REMOTE_ADDR'])." (IP:".$_SERVER['REMOTE_ADDR'].") Is Prohibited Access");
+  }
   }
 
   //WARNING
