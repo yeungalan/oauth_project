@@ -17,11 +17,12 @@ include "config.php";
 $url = $github_client_url;
 $client_secret = $github_clint_secret;
 
-	
-	if(isset($_GET["redirect"])!==False){
-		if (isset($_GET["url"])){
+			if (isset($_GET["url"])){
     $_SESSION["url"]=$_GET["url"];
     }
+	  
+	if(isset($_GET["redirect"])!==False){
+
 		header("Refresh: 0; url=https://github.com/login/oauth/authorize?response_type=code&client_id=".$client_id."&redirect_uri=".$url."&scope=user:email");
 		
 			if(isset($_SESSION["current"])!==True || $_SESSION["current"] !== 1){
