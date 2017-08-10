@@ -1,5 +1,5 @@
 ﻿<?php
-include "/lang/zh-HK.php";
+include "/lang/zh-HK.php";//Language
 $user_json_name = "1nbfa.json"; //使用者儲存位置
 $github_client_id = "0982c21b9c3db83c40b9"; //Github OAuth Api Key
 $github_clint_secret = "e618aee8256aa36feba9aa02e71777f25ebb3eb9"; //Github OAuth Api Keys
@@ -13,8 +13,8 @@ $announcementgrade = "info"; //success , info , warning , danger or keep "" for 
 $requireauthenction = "false"; //false = allow all internet user use this services , true = require key for using this system
 $authenctionkey = "" //authenction password
   
-  //optional settings experiemnt//
+//WARNING : Following Setting May Affect Perfomance//
 $enableipgeo = "false"; //using ip to find geolocation
-$banlocation = "CN,HK,VN,JP"; //ban speftic location to access system , use , to split each location
+$banlocation = ""; //ban speftic location to access system , use , to split each location
 $dbipcsv = "dbip-country-2017-08.csv"; //dl it from db-ip.com and place on root
 ?>
