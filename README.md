@@ -1,5 +1,5 @@
 # OAuth API
-[![forthebadge](http://forthebadge.com/images/badges/uses-css.svg)](http://forthebadge.com)[![forthebadge](http://forthebadge.com/images/badges/uses-git.svg)](http://forthebadge.com)[![forthebadge](http://forthebadge.com/images/badges/uses-html.svg)](http://forthebadge.com)[![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com)
+
 ## 功能
 -  二步驟驗證(Telegram & Google二步驟)
 -  非網頁應用程式登入
