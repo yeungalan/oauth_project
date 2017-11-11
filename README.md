@@ -1,5 +1,5 @@
 # OAuth API
-- 目前組建 : Release 2.1.0 201707271121
+[![forthebadge](http://forthebadge.com/images/badges/uses-css.svg)](http://forthebadge.com)
 ## 功能
 -  二步驟驗證(Telegram & Google二步驟)
 -  非網頁應用程式登入
