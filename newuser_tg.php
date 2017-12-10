@@ -8,7 +8,7 @@ include "config.php";
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
-<link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  
@@ -72,7 +72,7 @@ $obj = json_decode($json);
         <script>
          var tg=function(){
 	setInterval(function(){ 
-	$.get("./lib/tg_reg.php?text=/start <?php echo $ran; ?>",
+	$.get("/lib/tg_reg.php?text=/start <?php echo $ran; ?>",
     function(data, status){
 		if(data != ""){
 			window.location = "newuser_final.php?url=<?php echo $_GET["url"]; ?>&data=<?php echo $_GET["data"]?>&id=<?php echo $_GET["id"]?>&tg=".concat(data);

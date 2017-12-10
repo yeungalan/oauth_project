@@ -17,7 +17,7 @@ include "config.php";
     <meta name="google-signin-client_id" content="<?php echo $google_api_url?>">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
-	<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+	<link rel="stylesheet" href="https:https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <style>
 

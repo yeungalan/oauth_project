@@ -2,7 +2,7 @@
 
 function geoip($dbipcsv, $ip){
 
-$csvData = file_get_contents("./lib/".$dbipcsv);
+$csvData = file_get_contents("/lib/".$dbipcsv);
 $lines = explode(PHP_EOL, $csvData);
 $rangeArray = array();
 foreach ($lines as $line) {

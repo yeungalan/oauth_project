@@ -12,7 +12,7 @@ header("Refresh: 0; url=error.php?from=location.php&error=Not Implemented Functi
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
-<link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <style>

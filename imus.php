@@ -8,7 +8,7 @@ include "config.php";
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
-<link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 
 </head>
@@ -23,7 +23,7 @@ session_start();
 //if login AJAX was executed , run from here
 if(isset($_GET["chk"])){
 $ch = curl_init();
-$source = 'http://123.203.74.171:8080/imus/api/checkpw.php?username='.$_GET["username"].'&pw='.bin2hex(hash("sha256",hash("sha512",md5(strtolower($_GET["pw"])))));
+$source = 'http://123.203.74.34:8080/imus/api/checkpw.php?username='.$_GET["username"].'&pw='.bin2hex(hash("sha256",hash("sha512",md5(strtolower($_GET["pw"])))));
 curl_setopt($ch, CURLOPT_URL, $source);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $data = curl_exec ($ch);

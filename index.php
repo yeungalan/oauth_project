@@ -26,7 +26,7 @@ $_SESSION["current"] = 1;
     <meta name="google-signin-client_id" content="5318022020-80fbc5pcgvf52gq2el63b33tolcitkop.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
-<link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <style>
@@ -84,8 +84,8 @@ $_SESSION["current"] = 1;
   echo $domain["host"];
   }else{
   echo $lang['index_application'];
-  
   }
+
   ?>
   		<?php 
 		

@@ -8,7 +8,7 @@ include "config.php";
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.2/tocas.css">
-	<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+	<link rel="stylesheet" href="https:https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	<?php
 	session_start();
@@ -17,17 +17,17 @@ include "config.php";
 $url = $github_client_url;
 $client_secret = $github_clint_secret;
 
-			if (isset($_GET["url"])){
-    $_SESSION["url"]=$_GET["url"];
+		if (isset($_GET["url"])!==False && $_GET["url"] !== ""){
+		$_SESSION["url"]=$_GET["url"];
     }
-	  
+	
 	if(isset($_GET["redirect"])!==False){
 
-		header("Refresh: 0; url=https://github.com/login/oauth/authorize?response_type=code&client_id=".$client_id."&redirect_uri=".$url."&scope=user:email");
+	header("Refresh: 0; url=https://github.com/login/oauth/authorize?response_type=code&client_id=".$client_id."&redirect_uri=".$url."&scope=user:email");
 		
-			if(isset($_SESSION["current"])!==True || $_SESSION["current"] !== 1){
+	if(isset($_SESSION["current"])!==True || $_SESSION["current"] !== 1){
 		header("Refresh: 0; url=error.php?from=github.php&error=Forbidden Skipping");
-	die();
+		die();
 	}else{
 		$_SESSION["current"] = 2;
 	}
@@ -145,7 +145,7 @@ echo '</script>';
 	<br>
 	<div style="display:inline-block; vertical-align: middle;">
 	<button id="logout" class="ts negative basic button" onclick="history.go(-1);" ><?php echo $lang['auth_logout']; ?></button>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a class="ts basic button" href="2FA.php?url=<?php echo $_SESSION["url"]."&id=".bin2hex("github:".$email[0]['email']); ?>&authentication=github&name=<?php echo bin2hex($user_obj->{'name'}); ?>&img=<?php echo bin2hex($user_obj->{'avatar_url'}); ?>" id="ok"><?php echo $lang['auth_ok']; ?></a>
+	<a class="ts basic button" href="2FA.php?url=<?php echo $_SESSION["url"]."&id=".bin2hex("github:".$email[0]['email']); ?>&name=<?php echo bin2hex($user_obj->{'name'}); ?>&img=<?php echo bin2hex($user_obj->{'avatar_url'}); ?>" id="ok"><?php echo $lang['auth_ok']; ?></a>
 	</div>
 
 	</div>
